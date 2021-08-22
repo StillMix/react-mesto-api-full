@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 const path = require('path');
@@ -20,11 +21,37 @@ const app = express();
 const userRouter = require('./routes/users');
 const cardsRouter = require('./routes/cards');
 
+const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
+
+const allowedCors = [
+  'http://localhost:3000',
+  'http://kirser.nomoredomains.club',
+  'https://kirser.nomoredomains.club',
+];
+
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useUnifiedTopology: true,
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
+});
+
+app.use((req, res, next) => {
+  const { origin } = req.headers;
+  const { method } = req;
+  const requestHeaders = req.headers['access-control-request-headers'];
+
+  if (allowedCors.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+    res.header('Access-Control-Allow-Credentials', true);
+  }
+
+  if (method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
+    res.header('Access-Control-Allow-Headers', requestHeaders);
+    return res.end();
+  }
+  next();
 });
 
 app.use(cookieParser());
