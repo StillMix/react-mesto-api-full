@@ -1,0 +1,27 @@
+.profile__btn-add {
+    cursor: pointer;
+    outline: none;
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: 2px;
+    width: 150px;
+    height: 50px;
+    border: none;
+    background-color: transparent;
+    margin-left: 244px;
+    margin-top: 35px;
+    background-repeat: no-repeat;
+    background-image: url(../../../images/add-plus.svg);
+}
+
+@media screen and (min-width: 320px) and (max-width: 786px) {
+    .profile__btn-add {
+        width: 282px;
+        margin-left: 0;
+        background-image: url(../../../images/add-plus-mobile.svg);
+    }
+}
+
+.profile__btn-add:hover {
+    opacity: 0.6;
+}

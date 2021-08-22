@@ -1,0 +1,6 @@
+.element__container {
+    display: flex;
+    max-width: 246px;
+    margin-left: 21px;
+    margin-top: 25px;
+}

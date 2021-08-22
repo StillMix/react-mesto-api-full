@@ -1,0 +1,14 @@
+.element {
+    position: relative;
+    max-width: 282px;
+    background-repeat: no-repeat;
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding-bottom: 32px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 786px) {
+    .element {
+        margin-left: 0;
+    }
+}

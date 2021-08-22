@@ -1,0 +1,15 @@
+.infoToolTip__btn{
+  cursor: pointer;
+    height: 40px;
+    width: 40px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: absolute;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    z-index: 2;
+    right: -40px;
+    top: -40px;
+}

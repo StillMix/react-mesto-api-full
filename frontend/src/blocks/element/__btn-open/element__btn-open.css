@@ -1,0 +1,8 @@
+.element__btn-open {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    margin-top: -1px;
+    margin-left: -6px;
+}

@@ -1,0 +1,28 @@
+.popup__btn-back {
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: absolute;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    z-index: 2;
+    right: -40px;
+    top: -40px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 786px) {
+    .popup__btn-back {
+        height: 26px;
+        width: 26px;
+        left: 255px;
+        top: -42px;
+    }
+}
+
+.popup__btn-back:hover {
+    opacity: 0.6;
+}

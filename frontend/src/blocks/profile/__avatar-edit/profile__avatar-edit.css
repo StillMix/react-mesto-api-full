@@ -1,0 +1,11 @@
+.profile__avatar-edit {
+    cursor: pointer;
+    opacity: 0;
+    width: 120px;
+    height: 120px;
+    position: absolute;
+}
+
+.profile__avatar-edit:hover {
+    opacity: 1;
+}

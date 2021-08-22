@@ -1,0 +1,18 @@
+.popup__error {
+    font-family: Inter;
+    opacity: 1;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    color: red;
+    margin-left: 36px;
+    margin-top: 5px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 786px) {
+    .popup__error {
+        left: 22px;
+        top: 155px;
+    }
+}

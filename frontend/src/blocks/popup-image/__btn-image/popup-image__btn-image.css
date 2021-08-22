@@ -1,0 +1,10 @@
+.popup-image__btn-image {
+    height: 55px;
+    background-size: cover;
+}
+
+@media screen and (min-width: 320px) and (max-width: 786px) {
+    .popup-image__btn-image {
+        height: 40px;
+    }
+}

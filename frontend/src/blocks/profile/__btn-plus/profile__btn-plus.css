@@ -1,0 +1,9 @@
+.profile__btn-plus {
+    height: 22px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 786px) {
+    .profile__btn-plus {
+        height: 16px;
+    }
+}
