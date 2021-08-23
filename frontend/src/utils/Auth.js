@@ -18,8 +18,8 @@ export default class Auth {
       method: 'POST',
         headers: this._headers,
         body: JSON.stringify({
-          password: password,
           email: email,
+          password: password,
         })
     }).then((response) => {
       return this._check(response)
@@ -34,10 +34,10 @@ authorize(password, email) {
     method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
-        password: password,
         email: email,
+        password: password,
       })
-  }) .then((response => {
+  }).then((response => {
     return response.json()
   }))
   .then((data) => {

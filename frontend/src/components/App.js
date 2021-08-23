@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState,  useCallback} from 'react';
 import {  Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import Main from './main/Main';
@@ -18,6 +19,7 @@ import InfoToolTip from './InfoToolTip/InfoToolTip';
 function App(props) {
     const [loggedIn, setloggedIn] = useState(false);
     const [userEmail, setuserEmail] = useState(null);
+    const [token, setToken] = useState(null);
     const [currentUser, setCurrentUser] = useState(null);
     const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
     const [isAddPlacePopupOpen, setisAddPlacePopupOpen] = useState(false);
@@ -42,7 +44,7 @@ function closeAllPopups(){
     document.removeEventListener('keyup', ESCClose);
 }
 function handleUpdateUser(newUser){
-  api.setUserInfo(newUser).then((data) =>{
+  api.setUserInfo(newUser,token).then((data) =>{
     setCurrentUser(data)
     closeAllPopups()
   })
@@ -52,7 +54,7 @@ function handleUpdateUser(newUser){
 }
 
 function handleUpdateAvatar(newAvatar){
-  api.setUserAvatar(newAvatar).then((data) =>{
+  api.setUserAvatar(newAvatar,token).then((data) =>{
     setCurrentUser(data)
     closeAllPopups()
   })
@@ -62,7 +64,7 @@ function handleUpdateAvatar(newAvatar){
 }
 
 React.useEffect(() => {
-  api.getUserInfo().then((user) => {
+  api.getUserInfo(token).then((user) => {
     setCurrentUser(user)
   })
   .catch((err) => {
@@ -92,7 +94,7 @@ const [cards, setCards] = useState([])
 
 
    function getCards(){
-    api.getCards().then((data) => {
+    api.getCards(token).then((data) => {
 
         setCards(data)
     }).catch((err) => {
@@ -102,7 +104,7 @@ const [cards, setCards] = useState([])
 
 function handleCardLike(card) {
   const isLiked = card.likes.some(i => i._id === currentUser._id);
-  api.changeLikeCardStatus(card._id, !isLiked).then((data) => {
+  api.changeLikeCardStatus(card._id, !isLiked, token).then((data) => {
       setCards((state) => state.map((c) => c._id === card._id ? data : c));
   }).catch((err) => {
     console.log(err)
@@ -110,7 +112,7 @@ function handleCardLike(card) {
 }
 
 function handleDeleteCard(card) {
-api.deleteCard(card._id).then((data) =>
+api.deleteCard(card._id, token).then((data) =>
 {
   setCards((state) => state.filter((c) => c._id !== card._id ));
 
@@ -121,7 +123,7 @@ api.deleteCard(card._id).then((data) =>
 }
 
 function addCard(newCard){
-  api.addCard(newCard).then((data)=>{
+  api.addCard(newCard, token).then((data)=>{
     setCards([data, ...cards]);
     closeAllPopups()
   })
@@ -149,6 +151,7 @@ function handleLogin(email){
 function tokenCheck() {
   if (localStorage.getItem('token')){
     const jwt = localStorage.getItem('token');
+    setToken(jwt);
     mestoAuth.getContent(jwt).then((res) => {
       if (res){
         const jwt = res;
