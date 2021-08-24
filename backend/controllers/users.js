@@ -145,7 +145,6 @@ module.exports.login = (req, res, next) => {
       res.cookie('jwt', token, {
         httpOnly: true,
         sameSite: 'None',
-        secure: true,
       })
         .status(200).send({ user: user.toJSON() });
     })
