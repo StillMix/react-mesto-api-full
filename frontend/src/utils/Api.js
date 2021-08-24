@@ -42,11 +42,10 @@ class Api {
     }
     setUserInfo(name, about) {
         return fetch(`${this._url}/users/me`, {
-            mode: 'no-cors',
+            credentials: 'include',
             method: 'PATCH',
             headers: this.headers,
             body: JSON.stringify({name, about }),
-            credentials: 'include',
         }).then((res) => {
             return this._check(res)
         });
