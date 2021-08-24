@@ -43,7 +43,9 @@ function closeAllPopups(){
     document.removeEventListener('keyup', ESCClose);
 }
 function handleUpdateUser(newUser){
+  console.log(newUser)
   api.setUserInfo(newUser).then((data) =>{
+    console.log(data)
     setCurrentUser(data)
     closeAllPopups()
   })
