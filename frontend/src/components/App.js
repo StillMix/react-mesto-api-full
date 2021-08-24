@@ -114,8 +114,9 @@ function handleCardLike(card) {
 function handleDeleteCard(card) {
 api.deleteCard(card._id).then((data) =>
 {
+  console.log(card)
   console.log(data)
-  setCards((state) => state.filter((c) => c._id !== data.data._id ));
+  setCards((state) => state.filter((c) => c._id !== card._id ));
 
 }).catch((err) => {
   console.log(err)
