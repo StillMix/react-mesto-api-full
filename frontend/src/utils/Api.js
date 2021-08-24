@@ -20,12 +20,15 @@ class Api {
         });
     }
 
-    addCard(data) {
+    addCard(name,link) {
         return fetch(`${this._url}/cards`, {
             method: 'POST',
             credentials: 'include',
             headers: this.headers,
-            body: JSON.stringify(data),
+            body: JSON.stringify({
+              name: name,
+              link: link
+            }),
         }).then((res) => {
             return this._check(res)
         });
