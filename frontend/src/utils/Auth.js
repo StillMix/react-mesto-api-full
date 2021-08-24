@@ -32,6 +32,7 @@ export default class Auth {
 authorize(password, email) {
   return fetch(`${this._url}/signin`, {
     method: 'POST',
+    credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({
         email: email,
