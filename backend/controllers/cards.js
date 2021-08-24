@@ -46,7 +46,7 @@ module.exports.createCard = (req, res, next) => {
   const { name, link } = req.body;
 
   if (!name || !link) {
-    next(new BadRequest('Поле "имя" или "ссылка" не указаны'));
+    next(new BadRequest(`Поле "имя" ${name} или "ссылка" ${link} не указаны`));
   }
 
   Card.create({ name, link, owner: req.user._id })
