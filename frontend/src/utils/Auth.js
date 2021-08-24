@@ -41,6 +41,7 @@ authorize(password, email) {
     return response.json()
   }))
   .then((data) => {
+    console.log(data.jwt)
     if (data){
       return data;
     }else{
