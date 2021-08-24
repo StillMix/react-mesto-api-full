@@ -105,8 +105,11 @@ module.exports.getUsers = (req, res, next) => {
     .catch(next);
 };
 
-module.exports.back = (req, res) => {
-  res.clearCookie('jwt');
+module.exports.backUser = (req, res, next) => {
+  if (!req.cookies.jwt) {
+    next(res.status(401).send({ message: 'Необходима авторизация' }));
+  }
+  res.clearCookie('jwt').status(201).send({ message: 'Удачного дня))' });
 };
 
 // eslint-disable-next-line no-undef
