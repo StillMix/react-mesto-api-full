@@ -105,6 +105,10 @@ module.exports.getUsers = (req, res, next) => {
     .catch(next);
 };
 
+module.exports.back = (req, res) => {
+  res.clearCookie('jwt');
+};
+
 // eslint-disable-next-line no-undef
 module.exports.createUser = (req, res, next) => {
   const { email, password } = req.body;
