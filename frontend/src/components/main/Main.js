@@ -14,6 +14,7 @@ function Main(props) {
   const [avatar, setAvatar] = React.useState('');
   const history = useHistory();
 
+  console.log(currentUser);
 React.useEffect(() => {
   currentUser && setName(currentUser.name)
   currentUser && setDescription(currentUser.about)
