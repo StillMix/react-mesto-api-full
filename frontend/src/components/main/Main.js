@@ -46,7 +46,7 @@ function signOut(){
             </div>
             <div className="cards">
                 <ul className="elements">
-                {props.cards.map((card) => {
+                {props.cards.data.map((card) => {
             return(
                 <Card key={card._id} card={ {...card} }  onCardClick={props.onCardClick} onCardDelete={props.onCardDelete} onCardLike={props.onCardLike} />
             )
