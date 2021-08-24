@@ -13,7 +13,7 @@ class Api {
     getCards() {
         return fetch(`${this._url}/cards/`, {
           credentials: 'include',
-            headers: this.headers,
+
         }).then((res) => {
             return this._check(res)
 
@@ -24,7 +24,7 @@ class Api {
         return fetch(`${this._url}/cards`, {
             method: 'POST',
             credentials: 'include',
-            headers: this.headers,
+
             body: JSON.stringify(data),
         }).then((res) => {
             return this._check(res)
@@ -35,7 +35,7 @@ class Api {
         return fetch(`${this._url}/cards/${id}`, {
             method: 'DELETE',
             credentials: 'include',
-            headers: this.headers,
+
         }).then((res) => {
             return this._check(res)
         });
@@ -44,7 +44,7 @@ class Api {
         return fetch(`${this._url}/users/me`, {
             method: 'PATCH',
             credentials: 'include',
-            headers: this.headers,
+
             body: JSON.stringify(data),
         }).then((res) => {
             return this._check(res)
@@ -54,7 +54,7 @@ class Api {
     getUserInfo() {
         return fetch(`${this._url}/users/me`, {
           credentials: 'include',
-                headers: this.headers,
+
             })
             .then((res) => {
                 return this._check(res)
@@ -64,7 +64,7 @@ class Api {
         return fetch(`${this._url}/users/me/avatar`, {
             method: 'PATCH',
             credentials: 'include',
-            headers: this.headers,
+            
             body: JSON.stringify(data),
         }).then((res) => {
             return this._check(res)
@@ -74,7 +74,6 @@ class Api {
       return fetch(`${this._url}/cards/likes/${id}`, {
         method: cardIsLiked ? "PUT" : "DELETE",
         credentials: 'include',
-        headers: this.headers,
     }).then((res) => {
         return this._check(res)
     });
@@ -83,9 +82,6 @@ class Api {
 
 const api = new Api({
     url: 'http://SMBackendMesto.nomoredomains.rocks',
-    headers: {
-      'Content-Type': 'application/json',
-    }
 })
 
 export default api;
