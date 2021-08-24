@@ -94,7 +94,7 @@ const [cards, setCards] = useState([])
 
    function getCards(){
     api.getCards().then((data) => {
-
+        console.log(data)
         setCards(data)
     }).catch((err) => {
         console.log(err)
