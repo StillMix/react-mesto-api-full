@@ -16,9 +16,11 @@ module.exports.deleteCard = (req, res, next) => {
         next(new NotFoundError('Нет карточки с таким id'));
       } else if (card.owner == req.user._id) {
         Card.findByIdAndDelete(card._id)
-          .then(() => {
-            Card.find({})
-              .then((cards) => res.status(200).send({ data: cards }));
+          .then((del) => {
+            if (del) {
+              Card.find({})
+                .then((cards) => res.status(200).send({ data: cards }));
+            }
           });
       } else {
         next(new Forbidden('Можно удалять только свои карточки'));
@@ -48,7 +50,11 @@ module.exports.createCard = (req, res, next) => {
   }
 
   Card.create({ name, link, owner: req.user._id })
-    .then((Cards) => res.send({ data: Cards }))
+    .then((card) => {
+      if (card) {
+        Card.find({}).then((cards) => res.status(200).send({ data: cards }));
+      }
+    })
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequest('Переданы некорректные данные при создании карточки.'));

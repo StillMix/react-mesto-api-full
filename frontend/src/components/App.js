@@ -122,7 +122,11 @@ api.deleteCard(card._id).then((data) =>
 }
 
 function addCard(newCard){
-  api.addCard(newCard).then((data)=>{
+  const card = {
+    name: newCard.name,
+    link: newCard.link,
+  }
+  api.addCard(card).then((data)=>{
     setCards([data, ...cards]);
     closeAllPopups()
   })
