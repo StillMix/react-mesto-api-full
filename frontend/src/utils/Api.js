@@ -10,78 +10,64 @@ class Api {
             return Promise.reject("Произошла ошибка");
         }
     }
-    getCards(token) {
+    getCards() {
         return fetch(`${this._url}/cards/`, {
-            headers:
-            {'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',},
+            headers: this.headers,
         }).then((res) => {
             return this._check(res)
 
         });
     }
 
-    addCard(data,token) {
+    addCard(data) {
         return fetch(`${this._url}/cards`, {
             method: 'POST',
-            headers:
-            {'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',},
+            headers: this.headers,
             body: JSON.stringify(data),
         }).then((res) => {
             return this._check(res)
         });
     }
 
-    deleteCard(id,token) {
+    deleteCard(id) {
         return fetch(`${this._url}/cards/${id}`, {
             method: 'DELETE',
-            headers:
-            {'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',},
+            headers: this.headers,
         }).then((res) => {
             return this._check(res)
         });
     }
-    setUserInfo(data, token) {
+    setUserInfo(data) {
         return fetch(`${this._url}/users/me`, {
             method: 'PATCH',
-            headers:
-            {'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',},
+            headers: this.headers,
             body: JSON.stringify(data),
         }).then((res) => {
             return this._check(res)
         });
     }
 
-    getUserInfo(token) {
+    getUserInfo() {
         return fetch(`${this._url}/users/me`, {
-                headers:
-                {'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json',}
+                headers: this.headers,
             })
             .then((res) => {
                 return this._check(res)
             })
     }
-    setUserAvatar(data, token) {
+    setUserAvatar(data) {
         return fetch(`${this._url}/users/me/avatar`, {
             method: 'PATCH',
-            headers:
-            {'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',},
+            headers: this.headers,
             body: JSON.stringify(data),
         }).then((res) => {
             return this._check(res)
         });
     }
-    changeLikeCardStatus(id, cardIsLiked, token){
+    changeLikeCardStatus(id, cardIsLiked){
       return fetch(`${this._url}/cards/likes/${id}`, {
         method: cardIsLiked ? "PUT" : "DELETE",
-        headers:
-        {'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json',},
+        headers: this.headers,
     }).then((res) => {
         return this._check(res)
     });
@@ -90,6 +76,9 @@ class Api {
 
 const api = new Api({
     url: 'http://SMBackendMesto.nomoredomains.rocks',
+    headers: {
+      'Content-Type': 'application/json',
+    }
 })
 
 export default api;
