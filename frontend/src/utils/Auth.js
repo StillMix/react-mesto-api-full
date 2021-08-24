@@ -17,6 +17,7 @@ export default class Auth {
     return fetch(`${this._url}/signup`, {
       method: 'POST',
         headers: this._headers,
+        credentials: 'include',
         body: JSON.stringify({
           email: email,
           password: password,
@@ -33,6 +34,7 @@ authorize(password, email) {
   return fetch(`${this._url}/signin`, {
     method: 'POST',
       headers: this._headers,
+      credentials: 'include',
       body: JSON.stringify({
         email: email,
         password: password,
@@ -41,7 +43,6 @@ authorize(password, email) {
     return response.json()
   }))
   .then((data) => {
-    console.log(data.jwt)
     if (data){
       return data;
     }else{
