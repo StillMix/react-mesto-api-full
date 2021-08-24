@@ -136,6 +136,16 @@ function addCard(card){
 
 }
 
+function backUser(){
+  api.backUser().then((data)=>{
+       console.log(data)
+  })
+  .catch((err) => {
+      console.log(err)
+  });
+
+}
+
 React.useEffect(() =>{
   getCards()
 },[])
@@ -209,7 +219,7 @@ function register(reg) {
         <Switch>
 
         <ProtectedRoute
-        onCardLike={handleCardLike} email={userEmail} onCardDelete={handleDeleteCard} onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick} cards={cards}  onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick}
+        onCardLike={handleCardLike} back={backUser} email={userEmail} onCardDelete={handleDeleteCard} onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick} cards={cards}  onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick}
           path="/main"
           loggedIn={loggedIn}
           component={Main}

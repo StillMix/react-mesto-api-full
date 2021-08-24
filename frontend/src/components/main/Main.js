@@ -21,7 +21,7 @@ React.useEffect(() => {
 }, [currentUser]);
 
 function signOut(){
-  localStorage.removeItem('token');
+  props.back()
   history.push('/sign-in');
 }
 

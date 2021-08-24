@@ -37,6 +37,18 @@ class Api {
         });
     }
 
+    backUser() {
+      return fetch(`${this._url}/users/backuser`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+      }).then((res) => {
+          return this._check(res)
+      });
+  }
+
     deleteCard(id) {
         return fetch(`${this._url}/cards/${id}`, {
             method: 'DELETE',
