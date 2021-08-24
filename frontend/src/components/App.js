@@ -148,7 +148,6 @@ function handleLogin(email){
 
 
 function tokenCheck() {
-  if (localStorage.getItem('token')){
     mestoAuth.getContent().then((res) => {
       if (res){
         const jwt = res;
@@ -159,7 +158,6 @@ function tokenCheck() {
       }
 
     }).catch(err => console.log(err));
-  }
 }
 
 function login(log) {
@@ -170,8 +168,8 @@ function login(log) {
   console.log(log)
 
   mestoAuth.authorize(log.PasswordInput,log.EmailInput).then((data) => {
-    console.log(data.jwt);
-    if (data.jwt){
+    console.log(data);
+    if (data){
           handleLogin(log.EmailInput);
           props.history.push('/main');
     }
