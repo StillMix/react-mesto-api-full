@@ -21,7 +21,7 @@ class Api {
     }
 
     addCard(name,link) {
-        return fetch(`${this._url}/cards`, {
+        return fetch(`${this._url}/cards/`, {
             method: 'POST',
             headers: this.headers,
             credentials: 'include',
@@ -44,7 +44,7 @@ class Api {
         });
     }
     setUserInfo(name, about) {
-        return fetch(`${this._url}/users/me`, {
+        return fetch(`${this._url}/users/me/`, {
             method: 'PATCH',
             headers: this.headers,
             credentials: 'include',
@@ -66,7 +66,7 @@ class Api {
             })
     }
     setUserAvatar(avatar) {
-        return fetch(`${this._url}/users/me/avatar`, {
+        return fetch(`${this._url}/users/me/avatar/`, {
             method: 'PATCH',
             credentials: 'include',
             headers: this.headers,
