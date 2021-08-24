@@ -45,10 +45,7 @@ class Api {
             method: 'PATCH',
             headers: this.headers,
             credentials: 'include',
-            body: JSON.stringify({
-              name: name,
-              about: about,
-            }),
+            body: JSON.stringify({name, about }),
         }).then((res) => {
             return this._check(res)
         });
@@ -68,9 +65,7 @@ class Api {
             method: 'PATCH',
             credentials: 'include',
             headers: this.headers,
-            body: JSON.stringify({
-              avatar: avatar,
-            }),
+            body: JSON.stringify({avatar}),
         }).then((res) => {
             return this._check(res)
         });
