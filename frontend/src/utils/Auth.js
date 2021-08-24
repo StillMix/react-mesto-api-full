@@ -16,6 +16,7 @@ export default class Auth {
   register(password, email) {
     return fetch(`${this._url}/signup`, {
       method: 'POST',
+      credentials: 'include',
         headers: this._headers,
         body: JSON.stringify({
           email: email,
