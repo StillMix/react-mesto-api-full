@@ -1,7 +1,6 @@
 class Api {
     constructor(config) {
         this._url = config.url;
-        this._headers = config.headers;
     }
     _check(res) {
         if (res.ok) {
@@ -13,7 +12,9 @@ class Api {
     getCards() {
         return fetch(`${this._url}/cards/`, {
           credentials: 'include',
-            headers: this.headers,
+            headers: {
+              'Content-Type': 'application/json',
+            },
         }).then((res) => {
             return this._check(res)
 
@@ -21,9 +22,11 @@ class Api {
     }
 
     addCard(name,link) {
-        return fetch(`${this._url}/cards/`, {
+        return fetch(`${this._url}/cards`, {
             method: 'POST',
-            headers: this.headers,
+            headers: {
+              'Content-Type': 'application/json',
+            },
             credentials: 'include',
             body: JSON.stringify({
               name: name,
@@ -38,15 +41,19 @@ class Api {
         return fetch(`${this._url}/cards/${id}`, {
             method: 'DELETE',
             credentials: 'include',
-            headers: this.headers,
+            headers: {
+              'Content-Type': 'application/json',
+            },
         }).then((res) => {
             return this._check(res)
         });
     }
     setUserInfo(name, about) {
-        return fetch(`${this._url}/users/me/`, {
+        return fetch(`${this._url}/users/me`, {
             method: 'PATCH',
-            headers: this.headers,
+            headers: {
+              'Content-Type': 'application/json',
+            },
             credentials: 'include',
             body: JSON.stringify({
               name:name,
@@ -59,17 +66,21 @@ class Api {
     getUserInfo() {
         return fetch(`${this._url}/users/me`, {
           credentials: 'include',
-                headers: this.headers,
+                headers: {
+                  'Content-Type': 'application/json',
+                },
             })
             .then((res) => {
                 return this._check(res)
             })
     }
     setUserAvatar(avatar) {
-        return fetch(`${this._url}/users/me/avatar/`, {
+        return fetch(`${this._url}/users/me/avatar`, {
             method: 'PATCH',
             credentials: 'include',
-            headers: this.headers,
+            headers: {
+              'Content-Type': 'application/json',
+          },
             body: JSON.stringify({avatar}),
         }).then((res) => {
             return this._check(res)
@@ -79,7 +90,9 @@ class Api {
       return fetch(`${this._url}/cards/${id}/likes`, {
         method: cardIsLiked ? "PUT" : "DELETE",
         credentials: 'include',
-        headers: this.headers,
+        headers: {
+          'Content-Type': 'application/json',
+      },
     }).then((res) => {
         return this._check(res)
     });
@@ -88,9 +101,6 @@ class Api {
 
 const api = new Api({
     url: 'http://SMBackendMesto.nomoredomains.rocks',
-    headers: {
-      'Content-Type': 'application/json',
-    }
 })
 
 export default api;
