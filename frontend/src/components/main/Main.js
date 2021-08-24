@@ -16,9 +16,9 @@ function Main(props) {
 
   console.log(currentUser);
 React.useEffect(() => {
-  currentUser && setName(currentUser.name)
-  currentUser && setDescription(currentUser.about)
-  currentUser && setAvatar(currentUser.avatar)
+  currentUser && setName(currentUser.data.name)
+  currentUser && setDescription(currentUser.data.about)
+  currentUser && setAvatar(currentUser.data.avatar)
 }, [currentUser]);
 
 function signOut(){
