@@ -42,8 +42,8 @@ authorize(password, email) {
     return response.json()
   }))
   .then((data) => {
-    if (data.token){
-      localStorage.setItem('token', data.token);
+    if (data.jwt){
+      localStorage.setItem('jwt', data.jwt);
       return data;
     }else{
       return data

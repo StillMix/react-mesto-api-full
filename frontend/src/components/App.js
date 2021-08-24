@@ -170,7 +170,8 @@ function login(log) {
   console.log(log)
 
   mestoAuth.authorize(log.PasswordInput,log.EmailInput).then((data) => {
-    if (data.token){
+    console.log(data.jwt);
+    if (data.jwt){
           handleLogin(log.EmailInput);
           props.history.push('/main');
     }
