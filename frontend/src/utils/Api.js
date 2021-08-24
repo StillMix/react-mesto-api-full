@@ -40,14 +40,14 @@ class Api {
             return this._check(res)
         });
     }
-    setUserInfo(data) {
+    setUserInfo(name, about) {
         return fetch(`${this._url}/users/me`, {
             method: 'PATCH',
             credentials: 'include',
             headers: this.headers,
             body: JSON.stringify({
-              name: data.name,
-              about: data.about,
+              name: name,
+              about: about,
             }),
         }).then((res) => {
             return this._check(res)
@@ -63,13 +63,13 @@ class Api {
                 return this._check(res)
             })
     }
-    setUserAvatar(data) {
+    setUserAvatar(avatar) {
         return fetch(`${this._url}/users/me/avatar`, {
             method: 'PATCH',
             credentials: 'include',
             headers: this.headers,
             body: JSON.stringify({
-              avatar: data.avatar,
+              avatar: avatar,
             }),
         }).then((res) => {
             return this._check(res)

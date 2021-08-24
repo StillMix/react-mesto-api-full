@@ -43,8 +43,8 @@ function closeAllPopups(){
     document.removeEventListener('keyup', ESCClose);
 }
 function handleUpdateUser(newUser){
-  console.log(newUser)
-  api.setUserInfo(newUser).then((data) =>{
+  console.log(newUser.name, newUser.about)
+  api.setUserInfo(newUser.name, newUser.about).then((data) =>{
     console.log(data)
     setCurrentUser(data)
     closeAllPopups()
@@ -55,7 +55,7 @@ function handleUpdateUser(newUser){
 }
 
 function handleUpdateAvatar(newAvatar){
-  api.setUserAvatar(newAvatar).then((data) =>{
+  api.setUserAvatar(newAvatar.avatar).then((data) =>{
     setCurrentUser(data)
     closeAllPopups()
   })
