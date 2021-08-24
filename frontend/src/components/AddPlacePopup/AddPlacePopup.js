@@ -7,10 +7,11 @@ function AddPlacePopup(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    props.handleSubmit({
+    const card = {
       name: name,
-      link:link
-    });
+      link: link,
+    }
+    props.handleSubmit(card);
     setName('');
     setLink('');
   }

@@ -121,10 +121,9 @@ api.deleteCard(card._id).then((data) =>
 
 }
 
-function addCard(newCard){
-  const card = {
-    name: newCard.name,
-    link: newCard.link,
+function addCard(card){
+  if (!card) {
+    return;
   }
   api.addCard(card.name, card.link).then((data)=>{
     setCards([data, ...cards]);
