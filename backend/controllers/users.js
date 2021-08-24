@@ -51,11 +51,11 @@ module.exports.patchInfoUser = (req, res, next) => {
   const { name, about } = req.body;
 
   if (!name || !about) {
-    next(new BadRequest('Поле "имя" или "о себе" не указаны'));
+    next(new BadRequest(`Поле "имя" ${name} или "о себе" ${about} не указаны`));
   }
 
   if (name === null || about === null) {
-    next(new BadRequest('Поле "имя" или "о себе" не указаны'));
+    next(new BadRequest(`Поле "имя" ${name} или "о себе" ${about} не указаны`));
   }
 
   User.findByIdAndUpdate(req.user._id, { name, about }, {
