@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
 
 const {
-  getUser, getUsers, back, patchAvatarUser, getInfoUser, patchInfoUser,
+  getUser, getUsers, backUser, patchAvatarUser, getInfoUser, patchInfoUser,
 } = require('../controllers/users');
 
 // eslint-disable-next-line no-undef
@@ -13,7 +13,7 @@ router.get('/:id', getUser);
 // eslint-disable-next-line no-undef
 router.get('/', getUsers);
 
-router.get('/back', back);
+router.get('/backUser', backUser);
 
 router.patch('/me/avatar', celebrate({
   body: Joi.object().keys({
