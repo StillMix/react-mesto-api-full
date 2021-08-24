@@ -89,7 +89,7 @@ class Api {
 }
 
 const api = new Api({
-    url: 'https://SMBackendMesto.nomoredomains.rocks',
+    url: 'http://SMBackendMesto.nomoredomains.rocks',
 })
 
 export default api;
