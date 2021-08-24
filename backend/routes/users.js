@@ -13,7 +13,7 @@ router.get('/:id', getUser);
 // eslint-disable-next-line no-undef
 router.get('/', getUsers);
 
-router.get('/backUser', backUser);
+router.post('/backuser', backUser);
 
 router.patch('/me/avatar', celebrate({
   body: Joi.object().keys({
