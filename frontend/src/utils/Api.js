@@ -48,7 +48,7 @@ class Api {
             credentials: 'include',
             method: 'PATCH',
             headers: this.headers,
-            body: JSON.stringify({name, about }),
+            body: JSON.stringify(name, about ),
         }).then((res) => {
             return this._check(res)
         });
@@ -87,9 +87,7 @@ class Api {
 const api = new Api({
     url: 'http://SMBackendMesto.nomoredomains.rocks',
     headers: {
-      'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Access-Control-Request-Headers': true,
     }
 })
 
