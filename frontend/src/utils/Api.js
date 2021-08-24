@@ -87,7 +87,9 @@ class Api {
 const api = new Api({
     url: 'http://SMBackendMesto.nomoredomains.rocks',
     headers: {
-        'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Access-Control-Request-Headers': true,
     }
 })
 
