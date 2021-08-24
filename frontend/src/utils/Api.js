@@ -45,9 +45,9 @@ class Api {
     }
     setUserInfo(name, about) {
         return fetch(`${this._url}/users/me`, {
-            credentials: 'include',
             method: 'PATCH',
             headers: this.headers,
+            credentials: 'include',
             body: JSON.stringify({
               name:name,
               about: about }),
