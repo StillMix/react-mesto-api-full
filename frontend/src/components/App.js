@@ -149,8 +149,7 @@ function handleLogin(email){
 
 function tokenCheck() {
   if (localStorage.getItem('token')){
-    const jwt = localStorage.getItem('token');
-    mestoAuth.getContent(jwt).then((res) => {
+    mestoAuth.getContent().then((res) => {
       if (res){
         const jwt = res;
         setloggedIn(true)

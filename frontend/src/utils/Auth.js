@@ -50,13 +50,14 @@ authorize(password, email) {
   })
 }
 
-getContent(token){
+getContent(){
   return fetch(`${this._url}/users/me`, {
     method: 'GET',
+    credentials: 'include',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        'Access-Control-Request-Headers': true,
       }
   })
   .then(res => {return res.json()})

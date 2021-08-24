@@ -144,7 +144,8 @@ module.exports.login = (req, res, next) => {
       const token = jwt.sign({ _id: user._id }, JWT_SECRET);
       res.cookie('jwt', token, {
         httpOnly: true,
-        sameSite: true,
+        sameSite: 'None',
+        secure: true,
       })
         .status(200).send({ user: user.toJSON() });
     })
