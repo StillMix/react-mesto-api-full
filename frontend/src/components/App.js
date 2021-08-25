@@ -142,7 +142,7 @@ React.useEffect(() =>{
       console.log(err)
   });
   getCards()
-},[loggedIn])
+},[loggedIn(true)])
 
 function handleCardClick(name, link){
     setisImagePopupOpen(true)
