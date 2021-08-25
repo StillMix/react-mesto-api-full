@@ -134,16 +134,6 @@ function backUser(){
 
 }
 
-React.useEffect(() =>{
-  api.getUserInfo().then((user) => {
-    setCurrentUser(user)
-  })
-  .catch((err) => {
-      console.log(err)
-  });
-  getCards()
-},[loggedIn(true)])
-
 function handleCardClick(name, link){
     setisImagePopupOpen(true)
     setselectedCard({name, link})
@@ -201,10 +191,20 @@ function register(reg) {
 });
 }
 
-
-  React.useEffect(()=>{
+  React.useEffect(() =>{
+    if(loggedIn === true){
+    api.getUserInfo().then((user) => {
+      setCurrentUser(user)
+    })
+    .catch((err) => {
+        console.log(err)
+    });
+    getCards()
+  }else{
     tokenCheck();
-  },[])
+    console.log(loggedIn)
+  }
+  },[loggedIn])
 
     return (
        <UserContext.Provider value={currentUser}>
