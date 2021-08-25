@@ -135,7 +135,6 @@ function backUser(){
 }
 
 React.useEffect(() =>{
-  if(loggedIn === true){
   api.getUserInfo().then((user) => {
     setCurrentUser(user)
   })
@@ -143,7 +142,6 @@ React.useEffect(() =>{
       console.log(err)
   });
   getCards()
-}
 },[loggedIn])
 
 function handleCardClick(name, link){
