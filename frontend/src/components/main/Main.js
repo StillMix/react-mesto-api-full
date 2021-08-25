@@ -25,6 +25,8 @@ function signOut(){
   history.push('/sign-in');
 }
 
+console.log(props.cards)
+
     return (
       <>
         <Header>
