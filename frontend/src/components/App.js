@@ -1,4 +1,3 @@
-/* eslint-disable array-callback-return */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState,  useCallback} from 'react';
 import {  Route, Switch, Redirect, withRouter } from 'react-router-dom';
@@ -92,10 +91,8 @@ const [cards, setCards] = useState([])
   }
 
 function handleCardLike(card) {
-  card.likes.some(i =>{
-    console.log(i);
-});
-  api.changeLikeCardStatus(card._id, ).then((data) => {
+  const isLiked = card.likes.some(i =>i === currentUser.data._id);
+  api.changeLikeCardStatus(card._id, !isLiked).then((data) => {
       setCards(data);
   }).catch((err) => {
     console.log(err)
