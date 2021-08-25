@@ -64,18 +64,6 @@ function handleUpdateAvatar(newAvatar){
   });
 }
 
-React.useEffect(() => {
-  api.getUserInfo().then((user) => {
-    setCurrentUser(user)
-  })
-  .catch((err) => {
-      console.log(err)
-  });
-},[loggedIn])
-
-
-
-
 function handleEditAvatarClick(){
     setisEditAvatarPopupOpen(true);
     document.addEventListener('keyup', ESCClose);
@@ -147,7 +135,15 @@ function backUser(){
 }
 
 React.useEffect(() =>{
+  if(loggedIn === true){
+  api.getUserInfo().then((user) => {
+    setCurrentUser(user)
+  })
+  .catch((err) => {
+      console.log(err)
+  });
   getCards()
+}
 },[loggedIn])
 
 function handleCardClick(name, link){
