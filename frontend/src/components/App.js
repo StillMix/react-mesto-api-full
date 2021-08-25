@@ -81,15 +81,6 @@ function handleAddPlaceClick(){
 ///card
 const [cards, setCards] = useState([])
 
-
-   function getCards(){
-    api.getCards().then((data) => {
-        setCards(data)
-    }).catch((err) => {
-        console.log(err)
-    })
-  }
-
 function handleCardLike(card) {
   const isLiked = card.likes.some(i =>i === currentUser.data._id);
   api.changeLikeCardStatus(card._id, !isLiked).then((data) => {
@@ -144,19 +135,37 @@ function handleLogin(email){
   setloggedIn(true)
 }
 
+function get() {
+  api.getUserInfo().then((user) => {
+    if(user){
+      setCurrentUser(user);
+      api.getCards().then((data) => {
+        if(data){
+        setCards(data)
+        setloggedIn(true)
+        props.history.push('/main');
+        }
+    }).catch((err) => {
+        console.log(err)
+    })
+    }
+  }).catch((err) => {
+    console.log(err)
+});
+}
 
 function tokenCheck() {
     mestoAuth.getContent().then((res) => {
       if (res){
         const jwt = res;
-        setloggedIn(true)
         setuserEmail(jwt.data.email)
-        props.history.push('/main');
+        get()
 
       }
 
     }).catch(err => console.log(err));
 }
+
 
 function login(log) {
   if (!log){
@@ -169,8 +178,7 @@ function login(log) {
     console.log(data);
     if (data){
           handleLogin(log.EmailInput);
-          setloggedIn(true)
-          props.history.push('/main');
+          get()
     }
   })
   .catch(err => console.log(err));
@@ -196,16 +204,6 @@ function register(reg) {
 React.useEffect(() =>{
    tokenCheck()
 },[])
-
-  React.useEffect(() =>{
-    api.getUserInfo().then((user) => {
-      setCurrentUser(user)
-    })
-    .catch((err) => {
-        console.log(err)
-    });
-    getCards()
-  },[loggedIn])
 
     return (
        <UserContext.Provider value={currentUser}>
