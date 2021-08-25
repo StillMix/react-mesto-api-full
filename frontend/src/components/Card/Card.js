@@ -18,7 +18,7 @@ function Card(props) {
                 <button className={`${props.card.owner._id === user._id ? 'element__basket' : 'element__basket-disactive'}`} type="button" onClick={handleDeleteClick}></button>
                 <div className="element__container">
                     <h3 className="element__name">{props.card.name}</h3>
-                    <button className={`element__heart ${props.card.likes.find(item => item._id === user._id) ? 'element__heart_active' : ''}`} onClick={handleLikeClick}></button>
+                    <button className={`element__heart ${props.card.likes.find(item => item === user._id) ? 'element__heart_active' : ''}`} onClick={handleLikeClick}></button>
                     <div className="element__likes">{props.card.likes.length}</div>
 
                 </div>
