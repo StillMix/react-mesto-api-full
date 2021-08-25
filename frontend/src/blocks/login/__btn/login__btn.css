@@ -1,23 +1,39 @@
-.login__btn{
-  margin-left: 0px;
+.login__btn {
   cursor: pointer;
   background: #FFFFFF;
-  margin-top: 216px;
-  border-radius: 2px;
-  width: 358px;
-  height: 50px;
   font-family: "Inter", "Arial", sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 22px;
-  text-align: center;
-  outline: none;
-  border: none;
-  margin-bottom: 104px;
-  color: #000000;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    outline: none;
+    border: none;
+    color: #000000;
+    border-radius: 2px;
 }
+
 
 .login__btn:hover{
   opacity: 0.6;
+}
+
+
+@media screen and (min-width: 787px) {
+  .login__btn {
+    margin-left: 0px;
+    margin-top: 216px;
+    width: 358px;
+    height: 50px;
+    margin-bottom: 104px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 786px) {
+  .login__btn {
+    width: 260px;
+    height: 46px;
+    margin-left: 30px;
+    margin-top: 173px;
+  }
 }

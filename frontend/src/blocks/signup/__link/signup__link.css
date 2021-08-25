@@ -4,11 +4,28 @@
   font-weight: normal;
   font-size: 18px;
   line-height: 22px;
-  margin-left: 624px;
   text-decoration: none;
   color: #FFFFFF;
 }
 
 .signup__link:hover{
   opacity: 0.6;
+}
+
+@media screen and (min-width: 787px) {
+  .signup__link {
+    margin-left: 624px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 786px) {
+  .signup__link {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 10px;
+    margin-left: 67.26px;
+  }
 }
