@@ -68,7 +68,7 @@ getContent(){
 }
 
 export const mestoAuth = new Auth({
-  url: 'http://SMBackendMesto.nomoredomains.rocks',
+  url: 'https://SMBackendMesto.nomoredomains.rocks',
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
