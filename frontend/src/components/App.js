@@ -71,7 +71,7 @@ React.useEffect(() => {
   .catch((err) => {
       console.log(err)
   });
-},[])
+},[loggedIn])
 
 
 
@@ -148,7 +148,7 @@ function backUser(){
 
 React.useEffect(() =>{
   getCards()
-},[])
+},[loggedIn])
 
 function handleCardClick(name, link){
     setisImagePopupOpen(true)
