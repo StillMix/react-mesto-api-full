@@ -191,6 +191,10 @@ function register(reg) {
 });
 }
 
+React.useEffect(() =>{
+   tokenCheck()
+},[])
+
   React.useEffect(() =>{
     if(loggedIn === true){
     api.getUserInfo().then((user) => {
@@ -201,7 +205,6 @@ function register(reg) {
     });
     getCards()
   }else{
-    tokenCheck();
     console.log(loggedIn)
   }
   },[loggedIn])
