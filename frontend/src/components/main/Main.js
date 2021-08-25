@@ -3,9 +3,9 @@ import avatarEdit from '../../images/avatar-edit.svg';
 import Card from '../Card/Card.js';
 import Header from '../header/Header';
 import {  useHistory } from 'react-router-dom';
+import { Dimensions } from 'react-native';
 import { UserContext } from '../../contexts/CurrentUserContext.js';
-
-
+let deviceWidth = Dimensions.get('window').width
 
 function Main(props) {
   const currentUser = React.useContext(UserContext);
@@ -30,7 +30,7 @@ console.log(props.cards)
     return (
       <>
         <Header>
-        <p className="header__email">{props.email}<span><button onClick={signOut} className="header__link header__button">Выйти</button></span></p>
+          {deviceWidth > 786 && <p className="header__email">{props.email}<span><button onClick={signOut} className="header__link header__button">Выйти</button></span></p>}
         </Header>
 <main className="content">
             <div className="profile">
