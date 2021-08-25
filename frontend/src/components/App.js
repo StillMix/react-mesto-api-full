@@ -24,6 +24,7 @@ function App(props) {
     const [isAddPlacePopupOpen, setisAddPlacePopupOpen] = useState(false);
     const [isEditAvatarPopupOpen, setisEditAvatarPopupOpen] = useState(false);
     const [isImagePopupOpen, setisImagePopupOpen] = useState(false);
+    const [isUserEmailInfoOpen, setisUserEmailInfoOpen] = useState(false);
     const [isInfoToolTip, setisInfoToolTip] = useState(false);
     const [selectedCard, setselectedCard] = useState(null);
 
@@ -77,6 +78,15 @@ function handleAddPlaceClick(){
     setisAddPlacePopupOpen(true)
     document.addEventListener('keyup', ESCClose);
 }
+
+function handleUserEmailInfo(){
+  console.log(isUserEmailInfoOpen)
+  if(isUserEmailInfoOpen === true){
+    console.log(isUserEmailInfoOpen)
+    setisUserEmailInfoOpen(false)
+  } else{
+  setisUserEmailInfoOpen(true)
+}}
 
 ///card
 const [cards, setCards] = useState([])
@@ -212,7 +222,7 @@ React.useEffect(() =>{
         <Switch>
 
         <ProtectedRoute
-        onCardLike={handleCardLike} back={backUser} email={userEmail} onCardDelete={handleDeleteCard} onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick} cards={cards}  onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick}
+        onCardLike={handleCardLike} onUserEmailOpen={handleUserEmailInfo} isOpenUserEmail={isUserEmailInfoOpen} back={backUser} email={userEmail} onCardDelete={handleDeleteCard} onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick} cards={cards}  onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick}
           path="/main"
           loggedIn={loggedIn}
           component={Main}

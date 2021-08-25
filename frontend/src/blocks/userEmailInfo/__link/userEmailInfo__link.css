@@ -1,0 +1,18 @@
+.userEmailInfo__link{
+  cursor: pointer;
+  font-family: "Inter", "Arial", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  outline: none;
+  background: transparent;
+  border: none;
+  color: #A9A9A9;
+  width: 100%;
+  text-align: center;
+}
+
+.userEmailInfo__link:hover{
+  opacity: 0.6;
+}

@@ -1,0 +1,23 @@
+@media screen and (min-width: 787px) {
+  .header__close{
+    display: none;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 786px) {
+  .header__close {
+    bottom: none;
+    height: 19.3px;
+    width: 18px;
+    margin-left: 132.26px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-image: url(../../../images/menuBack.svg);
+  }
+  .header__close:hover {
+    opacity: 0.6;
+  }
+}

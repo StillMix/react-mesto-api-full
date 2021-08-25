@@ -2,10 +2,9 @@ import React from 'react';
 import avatarEdit from '../../images/avatar-edit.svg';
 import Card from '../Card/Card.js';
 import Header from '../header/Header';
+import UserEmailInfo from '../userEmailInfo/userEmailInfo.js';
 import {  useHistory } from 'react-router-dom';
-import { Dimensions } from 'react-native';
 import { UserContext } from '../../contexts/CurrentUserContext.js';
-let deviceWidth = Dimensions.get('window').width
 
 function Main(props) {
   const currentUser = React.useContext(UserContext);
@@ -25,12 +24,13 @@ function signOut(){
   history.push('/sign-in');
 }
 
-console.log(deviceWidth)
 
     return (
       <>
+        <UserEmailInfo email={props.email} isOpen={props.isOpenUserEmail} signOut={signOut}/>
         <Header>
-          {deviceWidth > 786 && <p className="header__email">{props.email}<span><button onClick={signOut} className="header__link header__button">Выйти</button></span></p>}
+        <button className={`${props.isOpenUserEmail ? 'header__close' : 'header__open'}`} type="button" onClick={props.onUserEmailOpen} ></button>
+          <p className="header__email">{props.email}<span><button onClick={signOut} className="header__link header__button">Выйти</button></span></p>
         </Header>
 <main className="content">
             <div className="profile">
