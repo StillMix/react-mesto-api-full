@@ -169,11 +169,13 @@ function login(log) {
     console.log(data);
     if (data){
           handleLogin(log.EmailInput);
+          setloggedIn(true)
           props.history.push('/main');
     }
   })
   .catch(err => console.log(err));
 }
+
 
 
 function register(reg) {
@@ -196,7 +198,6 @@ React.useEffect(() =>{
 },[])
 
   React.useEffect(() =>{
-    if(loggedIn === true){
     api.getUserInfo().then((user) => {
       setCurrentUser(user)
     })
@@ -204,9 +205,6 @@ React.useEffect(() =>{
         console.log(err)
     });
     getCards()
-  }else{
-    console.log(loggedIn)
-  }
   },[loggedIn])
 
     return (
