@@ -3,8 +3,6 @@ import { UserContext } from '../../contexts/CurrentUserContext.js';
 
 function Card(props) {
   const user = React.useContext(UserContext);
-  console.log(user);
-  console.log(props.card.owner)
   function  handleLikeClick(){
     props.onCardLike(props.card)
   }
