@@ -25,7 +25,7 @@ function signOut(){
   history.push('/sign-in');
 }
 
-console.log(props.cards)
+console.log(deviceWidth)
 
     return (
       <>
