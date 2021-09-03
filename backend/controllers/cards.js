@@ -57,7 +57,7 @@ module.exports.createCard = (req, res, next) => {
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        next(new BadRequest('Переданы некорректные данные при создании карточки.'));
+        next(new BadRequest('Переданы некорректные данные при создании карточки.', err));
       }
       next(err);
     });
