@@ -17,7 +17,7 @@ const cardSchema = new mongoose.Schema({
     type: String,
     required: true,
     validate: {
-      validator: (ava) => validator.isURL(ava, { protocols: ['http', 'https', 'ftp'], require_tld: true, require_protocol: true }),
+      validator: (ava) => validator.isURL(ava, { require_protocol: true }),
       message: 'Неверная ссылка',
     },
   },

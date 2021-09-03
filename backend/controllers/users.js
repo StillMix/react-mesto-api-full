@@ -79,6 +79,11 @@ module.exports.patchInfoUser = (req, res, next) => {
 
 module.exports.patchAvatarUser = (req, res, next) => {
   const { avatar } = req.body;
+
+  if (avatar === null) {
+    next(new BadRequest(`Поле "avatar" ${avatar} не указаны`));
+  }
+
   User.findByIdAndUpdate(req.user._id, { avatar }, {
     new: true,
     runValidators: true,
