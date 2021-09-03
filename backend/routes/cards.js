@@ -21,7 +21,7 @@ router.get('/', getCards);
 router.post('/', celebrate({
   body: Joi.object().keys({
     name: Joi.string().required().min(2).max(30),
-    link: Joi.string().required().custom(
+    link: Joi.string().custom(
       (ava) => validator.isURL(ava, { require_protocol: true }),
     ),
   }),
