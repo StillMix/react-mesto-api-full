@@ -2,8 +2,6 @@ const router = require('express').Router();
 const validator = require('validator');
 const { celebrate, Joi } = require('celebrate');
 
-const isURL = () => (ava) => validator.isURL(ava, { require_protocol: true });
-
 const {
   deleteCard, getCards, createCard, likeCard, dislikeCard,
 } = require('../controllers/cards');
@@ -23,7 +21,9 @@ router.get('/', getCards);
 router.post('/', celebrate({
   body: Joi.object().keys({
     name: Joi.string().required().min(2).max(30),
-    link: Joi.string().custom(isURL),
+    link: Joi.string().custom(
+      (ava) => validator.isURL(ava, { require_protocol: true }),
+    ),
   }),
 }), createCard);
 
