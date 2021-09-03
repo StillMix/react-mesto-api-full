@@ -52,7 +52,7 @@ module.exports.createCard = (req, res, next) => {
   Card.create({ name, link, owner: req.user._id })
     .then((card) => {
       if (card) {
-        Card.find({}).then((cards) => res.status(200).send({ data: cards }));
+        res.status(200).send({ data: card });
       }
     })
     .catch((err) => {
