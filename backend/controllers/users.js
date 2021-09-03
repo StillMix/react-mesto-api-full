@@ -11,7 +11,7 @@ const NotFoundError = require('../middlewares/errors/NotFoundError');
 const BadRequest = require('../middlewares/errors/BadRequest');
 const Conflict = require('../middlewares/errors/Conflict');
 
-const JWT_SECRET  = process.env.JWT_SECRET;
+const { NODE_ENV, JWT_SECRET } = process.env;
 
 // eslint-disable-next-line no-undef
 module.exports.getUser = (req, res, next) => {
@@ -148,7 +148,7 @@ module.exports.login = (req, res, next) => {
 
   return User.findUserByCredentials(email, password, res, next)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, JWT_SECRET);
+      const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
       res.cookie('jwt', token, {
         httpOnly: true,
         sameSite: 'None',

@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const validator = require('validator');
 const { celebrate, Joi } = require('celebrate');
 
 const {
@@ -6,7 +7,12 @@ const {
 } = require('../controllers/cards');
 
 // eslint-disable-next-line no-undef
-router.delete('/:id', deleteCard);
+router.delete('/:id', celebrate({
+  body: Joi.object().keys({
+    params: Joi.string().required().hex().min(24)
+      .max(24),
+  }),
+}), deleteCard);
 
 // eslint-disable-next-line no-undef
 router.get('/', getCards);
@@ -15,14 +21,26 @@ router.get('/', getCards);
 router.post('/', celebrate({
   body: Joi.object().keys({
     name: Joi.string().required().min(2).max(30),
-    link: Joi.string().required().uri(),
+    link: Joi.string().required().custom(
+      (ava) => validator.isURL(ava, { protocols: ['http', 'https', 'ftp'], require_tld: true, require_protocol: true }),
+    ),
   }),
 }), createCard);
 
 // eslint-disable-next-line no-undef
-router.delete('/:id/likes', dislikeCard);
+router.delete('/:id/likes', celebrate({
+  body: Joi.object().keys({
+    params: Joi.string().required().hex().min(24)
+      .max(24),
+  }),
+}), dislikeCard);
 
 // eslint-disable-next-line no-undef
-router.put('/:id/likes', likeCard);
+router.put('/:id/likes', celebrate({
+  body: Joi.object().keys({
+    params: Joi.string().required().hex().min(24)
+      .max(24),
+  }),
+}), likeCard);
 
 module.exports = router;

@@ -6,6 +6,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
+const { celebrate, Joi } = require('celebrate');
 const NotFoundError = require('./middlewares/errors/NotFoundError');
 
 dotenv.config();
@@ -63,8 +64,18 @@ app.get('/crash-test', () => {
   }, 0);
 });
 
-app.post('/signin', login);
-app.post('/signup', createUser);
+app.post('/signin', celebrate({
+  body: Joi.object().keys({
+    email: Joi.string().required(),
+    password: Joi.string().required(),
+  }),
+}), login);
+app.post('/signup', celebrate({
+  body: Joi.object().keys({
+    email: Joi.string().email().required(),
+    password: Joi.string().required(),
+  }),
+}), createUser);
 
 const { auth } = require('./middlewares/auth');
 
@@ -77,7 +88,6 @@ app.use('/*', (req, res, next) => {
   next(new NotFoundError('Страница не найдена'));
 });
 
-app.use(express.static(path.resolve(__dirname, 'public')));
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log('Ссылка на сервер');
