@@ -10,7 +10,7 @@ const {
 // eslint-disable-next-line no-undef
 router.delete('/:id', celebrate({
   params: Joi.keys({
-    id: Joi.string().hex().min(24)
+    ID: Joi.string().hex().min(24)
       .max(24),
   }),
 }), deleteCard);
