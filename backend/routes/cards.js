@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const validator = require('validator');
 const { celebrate, Joi } = require('celebrate');
+const BadRequest = require('../middlewares/errors/BadRequest');
 
 const {
   deleteCard, getCards, createCard, likeCard, dislikeCard,
@@ -19,9 +20,12 @@ router.get('/', getCards);
 router.post('/', celebrate({
   body: Joi.object().keys({
     name: Joi.string().required().min(2).max(30),
-    link: Joi.string().custom(
-      (ava) => validator.isURL(ava, { require_protocol: true }),
-    ),
+    link: Joi.string().custom((ava) => {
+      if (validator.isURL(ava, { require_protocol: true })) {
+        return ava;
+      }
+      throw new BadRequest('Переданы некорректные данные при получении пользователя.');
+    }),
   }),
 }), createCard);
 
