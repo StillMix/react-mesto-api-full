@@ -6,8 +6,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
-const { celebrate, Joi } = require('celebrate');
+const { celebrate, Joi, errors } = require('celebrate');
 const NotFoundError = require('./middlewares/errors/NotFoundError');
+const BadRequest = require('./middlewares/errors/BadRequest');
 
 dotenv.config();
 
@@ -95,9 +96,10 @@ app.listen(PORT, () => {
   console.log(BASE_PATH);
 });
 
+app.use(errors());
+
 app.use((err, req, res, next) => {
-  const status = err.statusCode || 500;
-  const { message } = err;
-  res.status(status).json({ err: message });
-  return next();
+  if (err) {
+    next(new BadRequest('Переданы некорректные данные при получении пользователя.'));
+  }
 });
