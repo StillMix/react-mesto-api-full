@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const validator = require('validator');
 const { celebrate, Joi } = require('celebrate');
+const BadRequest = require('../middlewares/errors/BadRequest');
 
 const {
   getUser, getUsers, backUser, patchAvatarUser, getInfoUser, patchInfoUser,
@@ -21,9 +22,12 @@ router.post('/backuser', backUser);
 
 router.patch('/me/avatar', celebrate({
   body: Joi.object().keys({
-    avatar: Joi.string().required().custom(
-      (ava) => validator.isURL(ava, { protocols: ['http', 'https', 'ftp'], require_tld: true, require_protocol: true }),
-    ),
+    avatar: Joi.string().custom((ava) => {
+      if (validator.isURL(ava, { require_protocol: true })) {
+        return ava;
+      }
+      throw new BadRequest('Переданы некорректные данные при получении пользователя.');
+    }),
   }),
 }), patchAvatarUser);
 

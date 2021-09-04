@@ -33,14 +33,18 @@ router.post('/', celebrate({
 
 // eslint-disable-next-line no-undef
 router.delete('/:id/likes', celebrate({
-  params: Joi.string().hex().min(24)
-    .max(24),
+  params: Joi.keys({
+    id: Joi.string().hex().min(24)
+      .max(24),
+  }),
 }), dislikeCard);
 
 // eslint-disable-next-line no-undef
 router.put('/:id/likes', celebrate({
-  params: Joi.string().hex().min(24)
-    .max(24),
+  params: Joi.keys({
+    id: Joi.string().hex().min(24)
+      .max(24),
+  }),
 }), likeCard);
 
 module.exports = router;
