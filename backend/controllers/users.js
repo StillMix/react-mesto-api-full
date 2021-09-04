@@ -151,6 +151,10 @@ module.exports.createUser = (req, res, next) => {
 module.exports.login = (req, res, next) => {
   const { email, password } = req.body;
 
+  if (!email || !password) {
+    next(new BadRequest('Email или пароль не указаны'));
+  }
+
   return User.findUserByCredentials(email, password, res, next)
     .then((user) => {
       const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');

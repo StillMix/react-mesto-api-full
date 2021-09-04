@@ -11,10 +11,8 @@ router.get('/me', getInfoUser);
 
 // eslint-disable-next-line no-undef
 router.get('/:id', celebrate({
-  body: Joi.object().keys({
-    params: Joi.string().hex().min(24)
-      .max(24),
-  }),
+  params: Joi.string().hex().min(24)
+    .max(24),
 }), getUser);
 // eslint-disable-next-line no-undef
 router.get('/', getUsers);

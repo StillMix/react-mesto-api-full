@@ -8,10 +8,8 @@ const {
 
 // eslint-disable-next-line no-undef
 router.delete('/:id', celebrate({
-  body: Joi.object().keys({
-    params: Joi.string().hex().min(24)
-      .max(24),
-  }),
+  params: Joi.string().hex().min(24)
+    .max(24),
 }), deleteCard);
 
 // eslint-disable-next-line no-undef
@@ -29,18 +27,14 @@ router.post('/', celebrate({
 
 // eslint-disable-next-line no-undef
 router.delete('/:id/likes', celebrate({
-  body: Joi.object().keys({
-    params: Joi.string().hex().min(24)
-      .max(24),
-  }),
+  params: Joi.string().hex().min(24)
+    .max(24),
 }), dislikeCard);
 
 // eslint-disable-next-line no-undef
 router.put('/:id/likes', celebrate({
-  body: Joi.object().keys({
-    params: Joi.string().hex().min(24)
-      .max(24),
-  }),
+  params: Joi.string().hex().min(24)
+    .max(24),
 }), likeCard);
 
 module.exports = router;
