@@ -68,7 +68,7 @@ app.get('/crash-test', () => {
 app.post('/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().email().required(),
-    password: Joi.string().required(),
+    password: Joi.string().required().min(8).max(20),
   }),
 }), login);
 app.post('/signup', celebrate({
@@ -99,7 +99,11 @@ app.listen(PORT, () => {
 app.use(errors());
 
 app.use((err, req, res, next) => {
-  if (err) {
+  if (err.name === 'ValidationError') {
     next(new BadRequest('Переданы некорректные данные при получении пользователя.'));
   }
+  if (err.name === 'CastError') {
+    next(new BadRequest('Переданы некорректные данные.'));
+  }
+  res.status(err.statusCode).send({ message: `${err.message}` });
 });

@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
@@ -36,7 +37,7 @@ const userSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator: (ava) => validator.isEmail(ava),
-      message: 'Неверная ссылка',
+      message: 'Неверная почта',
     },
     unique: true,
   },
@@ -51,17 +52,20 @@ userSchema.statics.findUserByCredentials = function (email, password, res, next)
   return this.findOne({ email }).select('+password')
     .then((user) => {
       if (!user) {
-        next(new Unauthorized('Неправильные почта или пароль'));
+        console.log(user);
+        throw new Unauthorized('Неправильные почта или пароль');
+      } else {
+        console.log(user);
+        return bcrypt.compare(password, user.password)
+          .then((matched) => {
+            if (!matched) {
+              throw new Unauthorized('Неправильные почта или пароль');
+            } else {
+              console.log(user);
+              return user;
+            }
+          });
       }
-
-      return bcrypt.compare(password, user.password)
-        .then((matched) => {
-          if (!matched) {
-            next(new Unauthorized('Неправильные почта или пароль'));
-          }
-
-          return user;
-        });
     });
 };
 
