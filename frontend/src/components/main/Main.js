@@ -48,7 +48,10 @@ function signOut(){
             </div>
             <div className="cards">
                 <ul className="elements">
-               { console.log(props.cards.data.data , props.cards.data.map) }
+               {  props.cards.data.map((card) => {
+                  console.log(props.cards , props.cards.data.map)
+                  console.log(card) })
+                }
                 {!!props.cards.data.lenght? props.cards.data.map((card) => {
                   console.log(props.cards , props.cards.data.map)
                   console.log(card)
