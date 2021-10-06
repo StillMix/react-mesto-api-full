@@ -117,7 +117,7 @@ function addCard(card){
   console.log(card)
   api.addCard(card.name, card.link).then((data)=>{
     console.log(cards.data)
-       if(cards.length === null){
+       if(cards.data.length === null){
          setCards(data)
        } else{
       console.log(data.data.name, data, data.data)
