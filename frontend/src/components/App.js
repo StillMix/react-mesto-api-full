@@ -117,8 +117,8 @@ function addCard(card){
   console.log(card)
   api.addCard(card.name, card.link).then((data)=>{
     if(data) {
-      console.log(data.name, data)
-    setCards([data, ...cards]);
+      console.log(data.data.name, data)
+    setCards([data.data, ...cards]);
     closeAllPopups()
     }
   })
