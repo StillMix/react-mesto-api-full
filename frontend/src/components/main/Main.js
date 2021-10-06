@@ -48,7 +48,7 @@ function signOut(){
             </div>
             <div className="cards">
                 <ul className="elements">
-                {props.cards && props.cards.data.map((card) => {
+                {props.cards && props.cards.data.forEach((card) => {
                   console.log(props.cards , props.cards.data.map)
                   console.log(card)
             return(
