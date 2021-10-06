@@ -119,6 +119,7 @@ function addCard(card){
     if(data) {
       console.log(data.data.name, data)
     setCards([data.data, ...cards]);
+    console.log(cards)
     closeAllPopups()
     }
   })
