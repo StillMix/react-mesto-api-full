@@ -113,16 +113,18 @@ api.deleteCard(card._id).then((data) =>
 function addCard(card){
   if (!card) {
     return;
-  }
+  }else{
   console.log(card)
   api.addCard(card.name, card.link).then((data)=>{
+    if(data) {
     setCards(data);
     closeAllPopups()
+    }
   })
   .catch((err) => {
       console.log(err)
   });
-
+}
 }
 
 function backUser(){
