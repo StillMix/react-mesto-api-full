@@ -48,7 +48,7 @@ function signOut(){
             </div>
             <div className="cards">
                 <ul className="elements">
-                {props.cards && props.cards.data.map((card) => {
+                {props.cards && props.cards.data.forEach((card) => {
             return(
                 <Card key={card._id} card={ {...card} }  onCardClick={props.onCardClick} onCardDelete={props.onCardDelete} onCardLike={props.onCardLike} />
             )
