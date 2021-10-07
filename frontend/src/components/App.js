@@ -94,7 +94,7 @@ const [cards, setCards] = useState([])
 function handleCardLike(card) {
   const isLiked = card.likes.some(i =>i === currentUser.data._id);
   api.changeLikeCardStatus(card._id, !isLiked).then((data) => {
-      setCards(data);
+      setCards(data.data);
   }).catch((err) => {
     console.log(err)
 });
@@ -103,7 +103,7 @@ function handleCardLike(card) {
 function handleDeleteCard(card) {
 api.deleteCard(card._id).then((data) =>
 {
-  setCards(data)
+  setCards(data.data)
 }).catch((err) => {
   console.log(err)
 })
