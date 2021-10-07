@@ -121,7 +121,7 @@ function addCard(card){
          setCards(data)
        } else{
       console.log(data.data.name, data, data.data)
-      setCards([data.data, ...cards]);
+      setCards([data, ...cards]);
     console.log(cards)
     closeAllPopups()
        }
