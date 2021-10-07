@@ -157,7 +157,7 @@ function get() {
       setCurrentUser(user);
       api.getCards().then((data) => {
         if(data){
-        setCards(data)
+        setCards(data.data)
         setloggedIn(true)
         props.history.push('/main');
         }
