@@ -115,13 +115,13 @@ function addCard(card){
     return;
   }else{
   console.log(card)
-  api.addCard(card.name, card.link).then((data)=>{
-    console.log(cards.data)
+  api.addCard(card.name, card.link).then((newCard)=>{
+    console.log(newCard)
        if(cards.data.length === null){
-         setCards(data)
+         setCards(newCard)
        } else{
-      console.log(data.data.name, data, data.data)
-      setCards(data.data, ...cards);
+      console.log(newCard.data)
+      setCards([newCard, ...cards]);
     console.log(cards)
     closeAllPopups()
        }
