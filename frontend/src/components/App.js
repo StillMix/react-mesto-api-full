@@ -167,6 +167,7 @@ function get() {
 
 function tokenCheck() {
     mestoAuth.getContent().then((res) => {
+      console.log(res)
       if (res){
         const jwt = res;
         setuserEmail(jwt.data.email)
