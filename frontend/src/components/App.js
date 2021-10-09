@@ -183,10 +183,7 @@ function login(log) {
     return;
   }
 
-  console.log(log)
-
   mestoAuth.authorize(log.PasswordInput,log.EmailInput).then((data) => {
-    console.log(data);
     if (data.message === 'Неправильные почта или пароль'){
       console.log(data)
     }else{
