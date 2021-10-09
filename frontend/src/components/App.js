@@ -173,7 +173,7 @@ function tokenCheck() {
         console.log(res)
         const jwt = res;
         setuserEmail(jwt.data.email)
-        setCurrentUser(res);
+        setCurrentUser(res.data);
       api.getCards().then((data) => {
         if(data){
         setCards(data.data)
