@@ -170,10 +170,11 @@ function tokenCheck() {
       if(res.message === 'Необходима авторизация'){
        console.log(res)
       }else{
-        console.log(res)
+
         const jwt = res;
         setuserEmail(jwt.data.email)
-        setCurrentUser(res.data);
+
+        setCurrentUser(res);
       api.getCards().then((data) => {
         if(data){
         setCards(data.data)
