@@ -190,6 +190,7 @@ function login(log) {
     if (data){
           handleLogin(log.EmailInput);
           get()
+          console.log(data)
     }
   })
   .catch(err => console.log(err));
