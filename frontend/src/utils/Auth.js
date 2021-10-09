@@ -45,8 +45,6 @@ authorize(password, email) {
   .then((data) => {
     if (data){
       return data;
-    }else{
-      return data
     }
   })
 }

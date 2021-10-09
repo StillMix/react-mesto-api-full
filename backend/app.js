@@ -99,11 +99,5 @@ app.listen(PORT, () => {
 app.use(errors());
 
 app.use((err, req, res, next) => {
-  if (err.name === 'ValidationError') {
-    next(new BadRequest('Переданы некорректные данные при получении пользователя.'));
-  }
-  if (err.name === 'CastError') {
-    next(new BadRequest('Переданы некорректные данные.'));
-  }
   res.status(err.statusCode).send({ message: `${err.message}` });
 });
