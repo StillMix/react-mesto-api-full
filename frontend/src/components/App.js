@@ -187,12 +187,11 @@ function login(log) {
 
   mestoAuth.authorize(log.PasswordInput,log.EmailInput).then((data) => {
     console.log(data);
-    if (data){
-          handleLogin(log.EmailInput);
-          get()
-          console.log(data.message === 'Неправильные почта или пароль')
-          console.log(data = 'Неправильные почта или пароль')
-          console.log(data !== 'Неправильные почта или пароль')
+    if (data.message === 'Неправильные почта или пароль'){
+      console.log(data)
+    }else{
+      handleLogin(log.EmailInput);
+      get()
     }
   })
   .catch(err => console.log(err));
