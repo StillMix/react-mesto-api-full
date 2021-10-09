@@ -148,7 +148,6 @@ function handleLogin(email){
 
 function get() {
   api.getUserInfo().then((user) => {
-    console.log('123')
     if(user){
       setCurrentUser(user);
       api.getCards().then((data) => {
@@ -171,9 +170,19 @@ function tokenCheck() {
       if(res.message === 'Необходима авторизация'){
        console.log(res)
       }else{
+        console.log(res)
         const jwt = res;
         setuserEmail(jwt.data.email)
-        get()
+        setCurrentUser(res);
+      api.getCards().then((data) => {
+        if(data){
+        setCards(data.data)
+        setloggedIn(true)
+        props.history.push('/main');
+        }
+    }).catch((err) => {
+        console.log(err)
+    })
       }
 
     }).catch(err => console.log(err));
