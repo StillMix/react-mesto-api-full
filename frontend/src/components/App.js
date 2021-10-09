@@ -147,8 +147,8 @@ function handleLogin(email){
 }
 
 function get() {
-  console.log('123')
   api.getUserInfo().then((user) => {
+    console.log('123')
     if(user){
       setCurrentUser(user);
       api.getCards().then((data) => {
@@ -174,7 +174,6 @@ function tokenCheck() {
         const jwt = res;
         setuserEmail(jwt.data.email)
         get()
-        console.log('123')
       }
 
     }).catch(err => console.log(err));
@@ -191,7 +190,6 @@ function login(log) {
       console.log(data)
     }else{
       handleLogin(log.EmailInput);
-      console.log('123')
       get()
     }
   })
@@ -216,7 +214,6 @@ function register(reg) {
 }
 
 React.useEffect(() =>{
-  console.log('123')
    tokenCheck()
 },[])
 
