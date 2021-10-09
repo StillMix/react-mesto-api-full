@@ -167,12 +167,12 @@ function get() {
 
 function tokenCheck() {
     mestoAuth.getContent().then((res) => {
-      console.log(res)
-      if (res){
+      if(res.message === 'Необходима авторизация'){
+       console.log(res)
+      }else{
         const jwt = res;
         setuserEmail(jwt.data.email)
         get()
-
       }
 
     }).catch(err => console.log(err));
