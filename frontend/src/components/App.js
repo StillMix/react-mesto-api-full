@@ -190,7 +190,9 @@ function login(log) {
     if (data){
           handleLogin(log.EmailInput);
           get()
-          console.log(data)
+          console.log(data === 'Неправильные почта или пароль')
+          console.log(data = 'Неправильные почта или пароль')
+          console.log(data !== 'Неправильные почта или пароль')
     }
   })
   .catch(err => console.log(err));
