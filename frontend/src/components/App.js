@@ -166,7 +166,7 @@ function get() {
 }
 
 function tokenCheck() {
-
+   if(localStorage.getItem('jwt')){
   mestoAuth.getContent().then((res) => {
     if(res.message === 'Необходима авторизация'){
      console.log(res)
@@ -186,6 +186,7 @@ function tokenCheck() {
     }
   }).catch(err => console.log(err));
 }
+}
 
 
 function login(log) {
@@ -199,6 +200,7 @@ function login(log) {
     }else{
       handleLogin(log.EmailInput);
       get()
+      localStorage.setItem('jwt', log.EmailInput);
     }
   })
   .catch(err => console.log(err));
