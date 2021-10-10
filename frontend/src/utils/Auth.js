@@ -7,6 +7,7 @@ export default class Auth {
 
   _check(res) {
     if (res.status === 201) {
+      console.log(res)
         return res.json();
     } else {
         return Promise.reject("Произошла ошибка");
