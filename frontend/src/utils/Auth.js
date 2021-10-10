@@ -51,7 +51,7 @@ authorize(password, email) {
 }
 
 getContent(){
-  return fetch(`${this._url}/tokencheck`, {
+  return fetch(`${this._url}/users/me`, {
     method: 'GET',
     credentials: 'include',
           headers: {

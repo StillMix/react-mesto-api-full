@@ -166,17 +166,25 @@ function get() {
 }
 
 function tokenCheck() {
-    mestoAuth.getContent().then((data) => {
-      console.log(data)
-      console.log(data.message)
-      if(data.message === 'Необходима авторизация'){
-       console.log(data)
-      }else{
-        console.log('123')
-        get()
-      }
 
-    }).catch(err => console.log(err));
+  mestoAuth.getContent().then((res) => {
+    if(res.message === 'Необходима авторизация'){
+     console.log(res)
+    }else{
+      const jwt = res;
+      setuserEmail(jwt.data.email)
+      setCurrentUser(res);
+    api.getCards().then((data) => {
+      if(data){
+      setCards(data.data)
+      setloggedIn(true)
+     props.history.push('/main');
+      }
+  }).catch((err) => {
+      console.log(err)
+  })
+    }
+  }).catch(err => console.log(err));
 }
 
 
