@@ -20,7 +20,18 @@ module.exports.tokenCheck = (req, res, next) => {
   if (!req.cookies.jwt) {
     next(new AuthError('Необходима авторизация'));
   } else {
-    return res.status(201).send({ message: 'Авторизация прошла успешно' });
+    const token = req.cookies.jwt;
+    let payload;
+
+    try {
+      payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
+    } catch (err) {
+      next(new AuthError('Необходима авторизация'));
+    }
+
+    req.user = payload;
+
+    next();
   }
 };
 
