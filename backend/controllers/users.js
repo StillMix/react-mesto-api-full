@@ -20,7 +20,7 @@ module.exports.tokenCheck = (req, res, next) => {
   if (!req.cookies.jwt) {
     next(new AuthError('Необходима авторизация'));
   } else {
-    return res.send({ message: 'Авторизация прошла успешно' });
+    return res.status(201).send({ message: 'Авторизация прошла успешно' });
   }
 };
 
