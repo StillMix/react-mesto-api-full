@@ -167,6 +167,8 @@ function get() {
 
 function tokenCheck() {
     mestoAuth.getContent().then((res) => {
+      console.log(res)
+      console.log(res.message)
       if(res.message === 'Необходима авторизация'){
        console.log(res)
       }else{
