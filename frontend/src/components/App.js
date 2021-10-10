@@ -128,7 +128,8 @@ function addCard(card){
 
 function backUser(){
   api.backUser().then((data)=>{
-       console.log(data)
+    localStorage.removeItem('jwt');
+    console.log(data)
   })
   .catch((err) => {
       console.log(err)
