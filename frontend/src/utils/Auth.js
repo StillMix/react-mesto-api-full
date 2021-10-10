@@ -54,15 +54,12 @@ getContent(){
   return fetch(`${this._url}/users/me`, {
     method: 'GET',
     credentials: 'include',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Access-Control-Request-Headers': true,
-          },
-      })
-      .then((res) => {
-          return this._check(res)
-      })
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Access-Control-Request-Headers': true,
+      }
+  })
   .then(res => {return res.json()})
   .then(data => {return data})
 }
