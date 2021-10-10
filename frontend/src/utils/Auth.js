@@ -50,15 +50,15 @@ authorize(password, email) {
 }
 
 getContent(){
-  return fetch(`${this._url}/users/me`, {
-    method: 'GET',
+  return fetch(`${this._url}/tokencheck`, {
     credentials: 'include',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Access-Control-Request-Headers': true,
-      }
-  })
+          headers: {
+            'Content-Type': 'application/json',
+          },
+      })
+      .then((res) => {
+          return this._check(res)
+      })
   .then(res => {return res.json()})
   .then(data => {return data})
 }

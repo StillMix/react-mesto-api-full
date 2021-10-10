@@ -170,20 +170,7 @@ function tokenCheck() {
       if(res.message === 'Необходима авторизация'){
        console.log(res)
       }else{
-
-        const jwt = res;
-        setuserEmail(jwt.data.email)
-
-        setCurrentUser(res);
-      api.getCards().then((data) => {
-        if(data){
-        setCards(data.data)
-        setloggedIn(true)
-        props.history.push('/main');
-        }
-    }).catch((err) => {
-        console.log(err)
-    })
+        get()
       }
 
     }).catch(err => console.log(err));
