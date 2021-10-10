@@ -170,6 +170,7 @@ function tokenCheck() {
       if(res.message === 'Необходима авторизация'){
        console.log(res)
       }else{
+        console.log('123')
         get()
       }
 
