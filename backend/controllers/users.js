@@ -10,29 +10,10 @@ const User = require('../models/user');
 const NotFoundError = require('../middlewares/errors/NotFoundError');
 const BadRequest = require('../middlewares/errors/BadRequest');
 const Conflict = require('../middlewares/errors/Conflict');
-const AuthError = require('../middlewares/errors/AuthError');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
 
 // eslint-disable-next-line no-undef
-module.exports.tokencheck = (req, res, next) => {
-  if (!req.cookies.jwt) {
-    next(new AuthError('Необходима авторизация'));
-  } else {
-    const token = req.cookies.jwt;
-    let payload;
-
-    try {
-      payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
-    } catch (err) {
-      next(new AuthError('Необходима авторизация'));
-    }
-
-    req.user = payload;
-
-    next();
-  }
-};
 
 module.exports.getUser = (req, res, next) => {
   User.findById(req.params.id)
