@@ -10,10 +10,20 @@ const User = require('../models/user');
 const NotFoundError = require('../middlewares/errors/NotFoundError');
 const BadRequest = require('../middlewares/errors/BadRequest');
 const Conflict = require('../middlewares/errors/Conflict');
+const AuthError = require('../middlewares/errors/AuthError');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
 
 // eslint-disable-next-line no-undef
+
+module.exports.tokenCheck = (req, res, next) => {
+  if (!req.cookies.jwt) {
+    next(new AuthError('Необходима авторизация'));
+  } else {
+    return res.send({ message: 'Авторизация прошла успешно' });
+  }
+};
+
 module.exports.getUser = (req, res, next) => {
   User.findById(req.params.id)
     .then((users) => {

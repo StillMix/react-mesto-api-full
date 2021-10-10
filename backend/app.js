@@ -14,7 +14,7 @@ dotenv.config();
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 const {
-  createUser, login,
+  createUser, login, tokenCheck,
 } = require('./controllers/users');
 
 const { PORT = 3000, BASE_PATH } = process.env;
@@ -64,6 +64,8 @@ app.get('/crash-test', () => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
+
+app.get('/tokencheck', tokenCheck);
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
