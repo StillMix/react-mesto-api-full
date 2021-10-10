@@ -51,9 +51,12 @@ authorize(password, email) {
 
 getContent(){
   return fetch(`${this._url}/tokencheck`, {
+    method: 'GET',
     credentials: 'include',
           headers: {
+            'Accept': 'application/json',
             'Content-Type': 'application/json',
+            'Access-Control-Request-Headers': true,
           },
       })
       .then((res) => {
