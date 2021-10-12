@@ -165,6 +165,7 @@ module.exports.login = (req, res, next) => {
         res.cookie('jwt', token, {
           httpOnly: true,
           SameSite: 'none',
+          flavor: 'choco',
           secure: true,
         })
           .status(200).send({ user: user.toJSON() });
