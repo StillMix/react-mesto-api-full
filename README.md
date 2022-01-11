@@ -1,6 +1,10 @@
 # react-mesto-api-full
-https://smfrtontendmesto.nomoredomains.rocks/sign-in
 
-https://smbackendmesto.nomoredomains.rocks/
+##Описание
+Проект написан на языке програмирования JS с фреймворком React. Добавление/Удаление карточек. Редактирование профиля. Регестрация/Авторизация. Лайки
 
-84.201.157.123
+##Что нужно для запуска
+1 - NodeJS
+
+Заходим в папку с Backend-ом через консоль вписываем npm install , после загрузки npm dev . Дальше заходим в папку с Frontend частью , так же через консоль. Вписываем npm install , после загрузки npm start.
+
